@@ -21,7 +21,7 @@
 [![pgmpy](https://img.shields.io/badge/pgmpy-0.1.25-5B21B6?style=flat-square)](https://pgmpy.org/)
 [![Docs](https://img.shields.io/badge/Docs-34개-blue?style=flat-square&logo=readthedocs&logoColor=white)](./README.md)
 [![Lines](https://img.shields.io/badge/Lines-17k+-informational?style=flat-square)](./README.md)
-[![Theorems](https://img.shields.io/badge/Theorems_proven-82개-success?style=flat-square)](./README.md)
+[![Theorems](https://img.shields.io/badge/Theorems_proven-122개-success?style=flat-square)](./README.md)
 [![Exercises](https://img.shields.io/badge/Exercises-102개-orange?style=flat-square)](./README.md)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square&logo=opensourceinitiative&logoColor=white)](./LICENSE)
 
@@ -233,7 +233,7 @@
 
 ## 🏆 핵심 정리 인덱스
 
-이 레포에서 **완전한 증명**을 제공하는 대표 정리 모음입니다. 각 챕터의 문서에서 $\square$로 종결되는 엄밀한 증명을 확인할 수 있습니다. (전체 82개 정리 중 핵심만 발췌)
+이 레포에서 **완전한 증명**을 제공하는 대표 정리 모음입니다. 각 챕터의 문서에서 $\square$로 종결되는 엄밀한 증명을 확인할 수 있습니다. (전체 122개 정리 중 핵심만 발췌)
 
 | 정리 | 서술 | 출처 문서 |
 |------|------|----------|
@@ -258,7 +258,7 @@
 | **Chow-Liu 정리 (1968)** | Tree-restricted MLE = 상호정보량을 edge weight로 하는 maximum spanning tree | [Ch7-03](./ch7-learning-modern/03-structure-learning.md) |
 | **GNN = 학습된 BP, Attention = complete graph GNN** | Message passing의 비선형 일반화로서의 GNN, softmax attention = fully-connected soft BP | [Ch7-05](./ch7-learning-modern/05-gnn-transformer.md) |
 
-> 💡 **챕터별 총 정리 수**: Ch1(14) · Ch2(12) · Ch3(13) · Ch4(8) · Ch5(10) · Ch6(13) · Ch7(12) — 합계 **82개 정리 + 증명**, 약 **17,000+ 라인** 분량.
+> 💡 **챕터별 총 정리 수**: Ch1(16) · Ch2(18) · Ch3(18) · Ch4(14) · Ch5(15) · Ch6(21) · Ch7(20) — 합계 **122개 정리 + 증명**, 약 **17,000 라인** 분량.
 
 ---
 
@@ -355,6 +355,10 @@ plt.tight_layout(); plt.show()
 
 # 정리: Forward-Backward = sum-product, Viterbi = max-product. 같은 factor graph 위의
 # 서로 다른 semiring (+,×) vs (max,×) 연산. 둘 다 BP의 특수경우.
+#
+# ⚠️ 주의: 위 코드는 개념 설명용 unscaled 구현. T가 크면 α_T가 underflow할 수 있음.
+#         실전에서는 scaled Forward-Backward (각 step에서 정규화) 또는 log-space
+#         구현 필수. 구체적 구현은 Ch3-02 문서 참조.
 ```
 
 ---
@@ -491,11 +495,15 @@ Day 7  Ch4-04     BiLSTM-CRF / Transformer-CRF 아키텍처
 - **Information Theory, Inference, and Learning Algorithms** (MacKay, 2003) — BP·MRF의 직관적 해설
 - **Graphical Models, Exponential Families, and Variational Inference** (Wainwright & Jordan, 2008) — **변분 관점의 표준 리뷰 논문** (FnT)
 
-### 🔄 Message Passing · Belief Propagation
+### 🔄 Message Passing · Belief Propagation · Junction Tree
 - **Factor Graphs and the Sum-Product Algorithm** (Kschischang, Frey & Loeliger, 2001) — **Factor graph 원전**
+- **Local Computations with Probabilities on Graphical Structures and Their Application to Expert Systems** (Lauritzen & Spiegelhalter, 1988) — **Junction Tree / Hugin algorithm 원전**
+- **Probabilistic Networks and Expert Systems** (Cowell, Dawid, Lauritzen & Spiegelhalter, 1999) — JT 및 evidence propagation의 표준 교재
 - **Constructing Free-Energy Approximations and Generalized Belief Propagation** (Yedidia, Freeman & Weiss, 2003) — **Bethe / Loopy BP 원전**
 - **Understanding Belief Propagation and Its Generalizations** (Yedidia, Freeman & Weiss, 2001) — BP 튜토리얼
 - **Loopy Belief Propagation for Approximate Inference: An Empirical Study** (Murphy, Weiss & Jordan, 1999) — Loopy BP 실증 연구
+- **Complexity of Finding Embeddings in a k-Tree** (Arnborg, Corneil & Proskurowski, 1987) — **Treewidth NP-hardness 원전**
+- **On the Hardness of Approximate Reasoning** (Roth, 1996) — **Marginal inference #P-hardness 원전**
 
 ### 🎯 Bayesian Network · Causal · d-Separation
 - **Probabilistic Reasoning in Intelligent Systems** (Pearl, 1988) — **BN·d-separation 원전**
