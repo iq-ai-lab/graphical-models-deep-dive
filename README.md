@@ -2,15 +2,33 @@
 
 # 🕸️ Graphical Models Deep Dive
 
-**"조건부 독립 `A ⊥ B | C`를 정의로 말하는 것과, d-separation이 그래프 구조만으로 모든 조건부 독립을 결정한다는 global Markov 속성을 증명할 수 있는 것은 다르다"**
+### 조건부 독립
+
+$$A \perp\!\!\!\perp B \mid C$$
+
+### 를 **정의로 말하는 것** 과, **d-separation 이 그래프 구조만으로 모든 조건부 독립을 결정** 한다는 **global Markov property** 를 증명할 수 있는 것은 **다르다.**
 
 <br/>
 
-> *"HMM의 Forward-Backward와 Viterbi를 사용하는 것과 — 둘이 모두 factor graph 위의 sum-product / max-product 알고리즘의 특수 경우이며, message passing이 dynamic programming의 일반화임을 증명할 수 있는 것은 다르다.  
-> Mean-field Variational Inference를 쓰는 것과, 이것이 KL 최소화 + Bethe 자유에너지 근사로 통합되고 Loopy BP가 Bethe의 변분 고정점임(Yedidia–Freeman–Weiss 2003)을 증명할 수 있는 것은 다르다."*
+> *HMM 의 Forward–Backward 와 Viterbi 를 **사용하는 것** 과, 둘이 모두 factor graph 위의 **sum-product / max-product 알고리즘의 특수 경우** 이며 message passing 이 **dynamic programming 의 일반화** 임을 증명할 수 있는 것은 다르다.*
+>
+> *Mean-field Variational Inference 를 **쓰는 것** 과, 이것이*
+>
+> $$\min_q \mathrm{KL}(q \,\|\, p) \;\equiv\; \text{Bethe free energy 근사}$$
+>
+> *로 통합되고 **Loopy BP 가 Bethe 자유에너지의 변분 고정점** 임 (Yedidia–Freeman–Weiss 2003) 을 증명할 수 있는 것은 다르다.*
 
-조건부 독립의 그래프 기하부터 d-separation·Hammersley–Clifford·Junction Tree·Loopy BP·Variational Inference·CRF·GNN·Transformer attention까지  
-**"확률분포의 구조를 그래프로 — 왜 조건부 독립이 그래프 기하로 나타나는가"** 라는 질문으로 PGM·HMM·CRF·LDA·Diffusion inference·Graph Neural Network의 수학적 기반을 끝까지 파헤칩니다
+<br/>
+
+**다루는 정리·기법 (시간순)**
+
+Pearl 1988 *Bayesian Network + d-separation* · Hammersley–Clifford 1971 *MRF 정리* · Lauritzen–Spiegelhalter 1988 *Junction Tree* · Rabiner 1989 *HMM Forward–Backward / Viterbi* · Lafferty 2001 *CRF* · Yedidia–Freeman–Weiss 2003 *Loopy BP = Bethe* · Blei 2003 *LDA* · Kingma 2013 *VAE = amortized VI* · Kipf 2017 *GCN = MPNN* · Vaswani 2017 *Transformer attention*
+
+<br/>
+
+**핵심 질문**
+
+> 확률분포의 구조를 그래프로 — **왜 조건부 독립이 그래프 기하로 나타나는가** — d-separation · Hammersley–Clifford · Junction Tree · Loopy BP · Variational Inference · CRF · GNN · Transformer attention 까지, PGM · HMM · CRF · LDA · Diffusion inference · GNN 의 수학적 기반을 끝까지 파헤칩니다.
 
 <br/>
 
